@@ -14,7 +14,7 @@ fname_lst = fnmatch.filter(files_lst, '*.h5') #Filtered file name list: we only 
 #define sorting function
 def sort_bc_jets(file, label, target_path):
 
-    """Store the corresponding jets to the target file
+    """Store the corresponding jets data to the target file
     parameter:
         file(h5 file): the data file that I want to extract data from
         label(int): the label of jet type that I want to sort
@@ -31,8 +31,7 @@ def sort_bc_jets(file, label, target_path):
         temp_df.to_csv(target_path, mode= 'a', index = False)
     else:
         temp_df.to_csv(target_path, mode= 'a', index = False, header = False)
-
-
+    
 label_dict = {5: "b_jet.csv", 4: "c_jet.csv"} #store the label and its corresponding storage file
 for label in [5,4]:
     target_path = label_dict[label]
