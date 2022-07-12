@@ -24,7 +24,7 @@ def sort_bc_jets(file, label, target_path):
     return:
         None
     """
-    file = h5py.File(dataset_dir+file, 'r') #open file with h5py
+    file = h5py.File(dataset_dir + '/' + file, 'r') #open file with h5py
     dataset = file["jets"]
     jet_data = dataset[dataset["HadronConeExclTruthLabelID"]==label] #extract a specific jet data point
     temp_df = pd.DataFrame(jet_data)
