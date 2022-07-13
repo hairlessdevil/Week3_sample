@@ -6,12 +6,13 @@ import pandas as pd
 import sys
 
 #use the command line argument as the name that you want to store the diagram
-assert len(sys.argv) == 2, 'Incorret number of arguments'
-hist_name = sys.argv[1]
+assert len(sys.argv) == 3, 'Incorret number of arguments'
+hist_name = sys.argv[2] #the file name where we store the result histogram
+dir_name = sys.argv[1] #the directory where the b_jet and c_jet data files are located
 
 #extracting data from b_jet and c_jet file
-b_jet = pd.read_csv('b_jet.csv', usecols = ['DL1r_pb', 'DL1r_pc']) #only extract these two columns
-c_jet = pd.read_csv('c_jet.csv', usecols = ['DL1r_pb', 'DL1r_pc'])
+b_jet = pd.read_csv(dir_name + '/b_jet.csv') 
+c_jet = pd.read_csv(dir_name + '/c_jet.csv')
 
 
 #compute the discriminant score for each data point
