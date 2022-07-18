@@ -33,7 +33,7 @@ b_rej_ATLAS = 1/b_eff_ATLAS
 thresh_CMS = np.linspace(0.05, 0.95, 100)
 b_eff_CMS = np.array([np.count_nonzero((b_CMS > thresh)) for thresh in thresh_CMS])/b_len
 c_eff_CMS = np.array([np.count_nonzero((c_CMS < thresh)) for thresh in thresh_CMS])/c_len
-b_rej_CMS = 1/b_eff_ATLAS
+b_rej_CMS = 1/b_eff_CMS
 
 #plot the ROC curve
 plt.figure(figsize=(8,6), dpi=100)
@@ -44,5 +44,4 @@ plt.ylabel("b-jet rejection")
 plt.title("ROC curve for c-tagging baseline discriminant")
 plt.plot(c_eff_CMS, c_eff_ATLAS, ".", label = "CMS")
 plt.legend()
-plt.show()
 plt.savefig("ROC_curve.png")
