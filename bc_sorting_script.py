@@ -36,7 +36,7 @@ def sort_bc_jets(file, label, target_path, columns):
     else:
         temp_df.to_csv(target_path, mode= 'a', index = False, header = False)
     
-label_dict = {5: "b_jet.csv", 4: "c_jet.csv"} #store the label and its corresponding storage file
+label_dict = {5: "/b_jet.csv", 4: "/c_jet.csv"} #store the label and its corresponding storage file
 for label in [5,4]:
     result_path = target_path + label_dict[label]
     for file in fname_lst:
