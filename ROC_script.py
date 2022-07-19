@@ -27,21 +27,21 @@ b_len, c_len = b_jet.shape[0], c_jet.shape[0] #The total number of each jet
 #ATLAS-score
 thresh_ATLAS = np.linspace(-5, 4, 100)
 b_eff_ATLAS = np.array([np.count_nonzero((b_ATLAS > thresh)) for thresh in thresh_ATLAS])/b_len
-c_eff_ATLAS = np.array([np.count_nonzero((c_ATLAS < thresh)) for thresh in thresh_ATLAS])/c_len
+c_eff_ATLAS = np.array([np.count_nonzero((c_ATLAS > thresh)) for thresh in thresh_ATLAS])/c_len
 b_rej_ATLAS = 1/b_eff_ATLAS
 #CMS-score
 thresh_CMS = np.linspace(0.05, 0.95, 100)
 b_eff_CMS = np.array([np.count_nonzero((b_CMS > thresh)) for thresh in thresh_CMS])/b_len
-c_eff_CMS = np.array([np.count_nonzero((c_CMS < thresh)) for thresh in thresh_CMS])/c_len
+c_eff_CMS = np.array([np.count_nonzero((c_CMS > thresh)) for thresh in thresh_CMS])/c_len
 b_rej_CMS = 1/b_eff_CMS
 
 #plot the ROC curve
 plt.figure(figsize=(8,6), dpi=100)
-plt.plot(c_eff_ATLAS, b_rej_ATLAS, ".", label = "ATLAS")
+plt.plot(c_eff_ATLAS, b_rej_ATLAS, ".", label = "ATLAS-like")
 plt.yscale("log", base = 10)
 plt.xlabel("c-jet efficiency")
 plt.ylabel("b-jet rejection")
 plt.title("ROC curve for c-tagging baseline discriminant")
-plt.plot(c_eff_CMS, b_rej_CMS, ".", label = "CMS")
+plt.plot(c_eff_CMS, b_rej_CMS, ".", label = "CMS-like")
 plt.legend()
 plt.savefig("ROC_curve.png")
